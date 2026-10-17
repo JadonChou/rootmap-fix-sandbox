@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Contact</title>
+    <style>
+      body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; max-width: 720px; margin: 3rem auto; padding: 0 1rem; }
+      form { display: grid; gap: .5rem; }
+      label { font-weight: 600; }
+      input, textarea { padding: .5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px; }
+      .error { color: #b00020; font-size: .9rem; }
+      .success { color: #0a7a07; font-size: .95rem; }
+      button { padding: .6rem 1rem; font-size: 1rem; border-radius: 6px; }
+    </style>
+  </head>
+  <body>
+    <h1>Contact</h1>
+    <div id="formMessage" aria-live="polite"></div>
+
+    <form id="contactForm" action="#" novalidate>
+      <div>
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" autocomplete="name" />
+      </div>
+
+      <div>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" />
+      </div>
+
+      <div>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6"></textarea>
+      </div>
+
+      <div>
+        <button type="submit">Send message</button>
+      </div>
+    </form>
+
+    <script src="static/contact.js"></script>
+  </body>
+</html>
