@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Contact</title>
+    <style>
+      body { font-family: system-ui, -apple-system, Roboto, "Segoe UI", Arial; padding: 2rem; max-width: 680px; margin: auto; }
+      label { display:block; margin-top:1rem; }
+      input, textarea { width:100%; padding:0.5rem; margin-top:0.25rem; box-sizing:border-box; }
+      button { margin-top:1rem; padding:0.6rem 1rem; }
+      .hint { color:#555; font-size:0.9rem; }
+    </style>
+  </head>
+  <body>
+    <h1>Contact</h1>
+    <p class="hint">This is a static demo contact form. Submitting will open your mail client.</p>
+
+    <form id="contact-form">
+      <label>
+        Your name
+        <input type="text" name="name" id="name" placeholder="Jane Doe" required />
+      </label>
+
+      <label>
+        Your email
+        <input type="email" name="email" id="email" placeholder="you@example.com" required />
+      </label>
+
+      <label>
+        Message
+        <textarea name="message" id="message" rows="6" placeholder="Write your message here" required></textarea>
+      </label>
+
+      <button type="submit">Send</button>
+      <div id="status" aria-live="polite" style="margin-top:1rem;color:green"></div>
+    </form>
+
+    <script>
+      document.getElementById('contact-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = document.getElementById('name').value.trim();
+        var email = document.getElementById('email').value.trim();
+        var message = document.getElementById('message').value.trim();
+        if (!name || !email || !message) {
+          document.getElementById('status').textContent = 'Please fill out all fields.';
+          document.getElementById('status').style.color = 'red';
+          return;
+        }
+        var subject = encodeURIComponent('Contact from ' + name);
+        var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
+        // opens user's mail client
+        window.location.href = 'mailto:example@example.com?subject=' + subject + '&body=' + body;
+        document.getElementById('status').textContent = 'Opening mail client...';
+        document.getElementById('status').style.color = 'green';
+      });
+    </script>
+  </body>
+</html>
